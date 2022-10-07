@@ -41,7 +41,7 @@ module "vpc" {
 
 module "cloud_router" {
   source  = "terraform-google-modules/cloud-router/google"
-  version = "1.3.0"
+  version = "3.0.0"
 
   name    = "router-${var.region}"
   project = module.project.project_id
