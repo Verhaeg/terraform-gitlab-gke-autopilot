@@ -3,7 +3,8 @@ output "project" {
 }
 
 output "cluster" {
-  value = module.gke
+  value     = module.gke
+  sensitive = true
 }
 
 output "gitlab" {
