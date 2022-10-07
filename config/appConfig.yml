@@ -1,0 +1,139 @@
+## https://docs.gitlab.com/charts/charts/globals#configure-appconfig-settings
+## Rails based portions of this chart share many settings
+
+## https://docs.gitlab.com/charts/charts/globals#general-application-settings
+# cdnHost:
+### Default Theme
+### Available values:
+##! `1`  for Indigo
+##! `2`  for Dark
+##! `3`  for Light
+##! `4`  for Blue
+##! `5`  for Green
+##! `6`  for Light Indigo
+##! `7`  for Light Blue
+##! `8`  for Light Green
+##! `9`  for Red
+##! `10` for Light Red
+defaultTheme: 7
+
+## https://docs.gitlab.com/charts/charts/globals#content-security-policy
+contentSecurityPolicy:
+  enabled: false
+  report_only: true
+  # directives: {}
+
+## https://docs.gitlab.com/charts/charts/globals#hooking-analytics-services-to-the-gitlab-instance
+extra:
+  googleAnalyticsId:
+  googleTagManagerNonceId:
+
+## https://docs.gitlab.com/charts/charts/globals#lfs-artifacts-uploads-packages-external-mr-diffs-and-dependency-proxy
+object_store:
+  enabled: true
+  proxy_download: true
+  storage_options: {}
+  connection:
+    key: ${gcs_connection_secret}
+
+lfs:
+  enabled: true
+  proxy_download: true
+  bucket: ${bucket_prefix}-git-lfs
+
+artifacts:
+  enabled: true
+  proxy_download: true
+  bucket: ${bucket_prefix}-gitlab-artifacts
+
+uploads:
+  enabled: true
+  proxy_download: true
+  bucket: ${bucket_prefix}-gitlab-uploads
+
+packages:
+  enabled: true
+  proxy_download: true
+  bucket: ${bucket_prefix}-gitlab-packages
+
+externalDiffs:
+  enabled: false
+  when:
+  proxy_download: true
+  bucket: ${bucket_prefix}-gitlab-mr-diffs
+
+terraformState:
+  enabled: true
+  bucket: ${bucket_prefix}-gitlab-terraform-state
+
+ciSecureFiles:
+  enabled: false
+  bucket: ${bucket_prefix}-gitlab-ci-secure-files
+
+dependencyProxy:
+  enabled: false
+  proxy_download: true
+  bucket: ${bucket_prefix}-gitlab-dependency-proxy
+
+backups:
+  bucket: ${bucket_prefix}-gitlab-backups
+  tmpBucket: ${bucket_prefix}-tmp
+
+## https://docs.gitlab.com/charts/installation/command-line-options.html#incoming-email-configuration
+## https://docs.gitlab.com/charts/charts/gitlab/mailroom/index.html#incoming-email
+incomingEmail:
+  enabled: false
+
+## https://docs.gitlab.com/charts/charts/gitlab/mailroom/index.html#service-desk-email
+serviceDeskEmail:
+  enabled: false
+
+## https://docs.gitlab.com/charts/charts/globals#ldap
+ldap:
+  # prevent the use of LDAP for sign-in via web.
+  preventSignin: false
+  servers: {}
+  ## See documentation for complete example of a configured LDAP server
+
+## https://docs.gitlab.com/charts/charts/globals#kas-settings
+gitlab_kas: {}
+  # secret:
+  # key:
+  # enabled:
+  # externalUrl:
+  # internalUrl:
+
+## https://docs.gitlab.com/charts/charts/globals#omniauth
+omniauth:
+  enabled: true
+  autoSignInWithProvider:
+  syncProfileFromProvider: [google_oauth2]
+  syncProfileAttributes: [email, name, location]
+  allowSingleSignOn: [google_oauth2]
+  blockAutoCreatedUsers: false
+  autoLinkLdapUser: true
+  providers:
+  - secret: ${omniauth_google_secret}
+  - secret: ${omniauth_gitlab_secret}
+
+## https://docs.gitlab.com/charts/charts/globals#kerberos
+kerberos:
+  enabled: false
+
+## https://docs.gitlab.com/charts/charts/globals#configure-appconfig-settings
+sentry:
+  enabled: false
+
+gitlab_docs:
+  enabled: false
+
+smartcard:
+  enabled: false
+
+sidekiq:
+  routingRules: []
+
+# Config that only applies to the defaults on initial install
+initialDefaults: {}
+  # signupEnabled:
+## End of global.appConfig

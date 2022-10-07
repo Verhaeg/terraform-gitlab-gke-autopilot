@@ -1,0 +1,5 @@
+.terraform
+default.auto.tfvars
+*.tfstate*
+*.json
+plan.out
