@@ -51,7 +51,7 @@ module "cloud_router" {
 
 module "nat" {
   source  = "terraform-google-modules/cloud-nat/google"
-  version = "2.1.0"
+  version = "2.2.1"
 
   project_id = module.project.project_id
   region     = var.region
