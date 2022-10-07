@@ -65,6 +65,10 @@ module "gitlab" {
       name  = "gitlab.kas.resources.requests.memory",
       value = "512Mi"
     },
+    {
+      name  = "gitlab.toolbox.resources.requests.memory",
+      value = "512Mi"
+    },
   ]
 
   values = [

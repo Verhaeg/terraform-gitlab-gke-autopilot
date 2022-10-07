@@ -34,7 +34,7 @@ object_store:
   proxy_download: true
   storage_options: {}
   connection:
-    key: ${gcs_connection_secret}
+    secret: ${gcs_connection_secret}
 
 lfs:
   enabled: true
