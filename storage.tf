@@ -4,7 +4,7 @@ module "gcs_buckets" {
 
   project_id = module.project.project_id
   labels     = merge(var.labels, { "infra-type" : "storage" })
-  location   = "US"
+  location   = upper(var.gitlab["bucket_location"])
 
   names = [
     "gitlab-artifacts",

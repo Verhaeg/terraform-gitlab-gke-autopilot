@@ -95,11 +95,12 @@ variable "namespaces" {
 
 variable "gitlab" {
   type = object({
-    domain        = string
-    cert_email    = string
-    namespace     = string
-    version       = string
-    bucket_prefix = string
+    domain          = string
+    cert_email      = string
+    namespace       = string
+    version         = string
+    bucket_prefix   = string
+    bucket_location = string
   })
 
   description = "Set of configurations for GitLab"

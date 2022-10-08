@@ -76,7 +76,7 @@ module "gitlab" {
       global = {
         appConfig = yamldecode(templatefile("config/appConfig.yml", {
           gcs_connection_secret  = kubernetes_secret_v1.gcs_connection.metadata[0].name,
-          bucket_prefix          = var.gitlab["bucket_prefix"],
+          bucket_prefix          = "${var.gitlab["bucket_prefix"]}-${lower(var.gitlab["bucket_location"])}",
           omniauth_google_secret = kubernetes_secret_v1.omniauth_google.metadata[0].name,
           omniauth_gitlab_secret = kubernetes_secret_v1.omniauth_gitlab.metadata[0].name,
         }))
