@@ -1,5 +1,45 @@
 # Terraform GitLab with GKE AutoPilot
 
+This module aims to create a new GCP project, network-isolated, together with a running public GKE Autopilot cluster to be able to install and run Gitlab self hosted.
+
+## Why a public GKE Autopilot cluster?
+
+Since Gitlab requires communication between runners and server through HTTP and multiple listening ports (HTTP + SSH at least) to be able to perform correctly. The best way to enable all these features without having a headache of ingress, permissions, firewalls and such is to run on a public cluster.
+
+I tried to run on a private cluster, but encountered some issues with CertManager and SSH (for git pull/push). Running with public cluster allowed me to have a working instance and since the firewalls only enable the required ports, we don't have much issues with that.
+
+## Work in progress
+
+This is a work in progress and it aims to help users on launching their usable and first version of Gitlab self-hosted on GCP with scalability properties. Some issues I tendo to work on:
+
+* Optional project creation
+* Better handling of created subnets and/or use of Shared VPC
+* External PostgreSQL
+  * With option to run on CloudSQL
+* External Redis
+  * With option to run on MemoryStore
+
+## What it creates
+
+This module will create the following artifacts:
+
+* Project
+* Custom VPC
+* Custom Subnets
+* Required Service Accounts
+* GKE Autopilot - public
+* GCS Buckets for external storage
+* GKE Namespaces (gitlab, monitoring, runners)
+* GCP cloud IP
+* GCP Domains DNS entries
+
+## Cloud Requirements
+
+Before applying this module, be sure to have the following already configured in your GCP account:
+
+* Billing Account
+* GCP Cloud DNS project
+
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements
 
