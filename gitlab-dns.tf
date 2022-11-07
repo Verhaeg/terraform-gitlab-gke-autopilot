@@ -1,6 +1,6 @@
 module "gitlab_ip" {
   source  = "terraform-google-modules/address/google"
-  version = "3.1.1"
+  version = "3.1.2"
 
   project_id = module.project.project_id
   region     = var.region
