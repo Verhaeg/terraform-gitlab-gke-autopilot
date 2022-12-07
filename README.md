@@ -54,7 +54,7 @@ Before applying this module, be sure to have the following already configured in
 
 | Name | Version |
 |------|---------|
-| <a name="provider_google"></a> [google](#provider\_google) | 4.39.0 |
+| <a name="provider_google"></a> [google](#provider\_google) | 4.43.0 |
 | <a name="provider_http"></a> [http](#provider\_http) | 3.1.0 |
 | <a name="provider_kubernetes"></a> [kubernetes](#provider\_kubernetes) | 2.14.0 |
 
@@ -65,7 +65,7 @@ Before applying this module, be sure to have the following already configured in
 | <a name="module_gcs_buckets"></a> [gcs\_buckets](#module\_gcs\_buckets) | terraform-google-modules/cloud-storage/google | ~> 3.4 |
 | <a name="module_gitlab"></a> [gitlab](#module\_gitlab) | terraform-module/release/helm | 2.8.0 |
 | <a name="module_gitlab_gcs_connection_sa"></a> [gitlab\_gcs\_connection\_sa](#module\_gitlab\_gcs\_connection\_sa) | terraform-google-modules/service-accounts/google | ~> 4.1 |
-| <a name="module_gitlab_ip"></a> [gitlab\_ip](#module\_gitlab\_ip) | terraform-google-modules/address/google | 3.1.1 |
+| <a name="module_gitlab_ip"></a> [gitlab\_ip](#module\_gitlab\_ip) | terraform-google-modules/address/google | 3.1.2 |
 | <a name="module_gke"></a> [gke](#module\_gke) | terraform-google-modules/kubernetes-engine/google//modules/beta-autopilot-public-cluster | ~> 23.1 |
 | <a name="module_project"></a> [project](#module\_project) | terraform-google-modules/project-factory/google | ~> 14.0 |
 | <a name="module_service_accounts"></a> [service\_accounts](#module\_service\_accounts) | terraform-google-modules/service-accounts/google | ~> 4.1 |

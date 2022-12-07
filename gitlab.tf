@@ -40,10 +40,6 @@ module "gitlab" {
       name  = "certmanager-issuer.email",
       value = var.gitlab["cert_email"]
     },
-    {
-      name  = "gitlab-runner.runners.privileged",
-      value = true
-    },
     # Resources minimum for Autopilot
     {
       name  = "registry.resources.requests.memory",
@@ -69,6 +65,14 @@ module "gitlab" {
       name  = "gitlab.toolbox.resources.requests.memory",
       value = "512Mi"
     },
+    {
+      name  = "gitlab.migrations.resources.requests.memory",
+      value = "512Mi"
+    },
+    {
+      name  = "gitlab.webservice.resources.requests.cpu",
+      value = "600m"
+    },
   ]
 
   values = [
@@ -80,6 +84,11 @@ module "gitlab" {
           omniauth_google_secret = kubernetes_secret_v1.omniauth_google.metadata[0].name,
           omniauth_gitlab_secret = kubernetes_secret_v1.omniauth_gitlab.metadata[0].name,
         }))
+      }
+      gitlab-runner = {
+        runners = {
+          config = yamldecode(yamlencode(file("config/runners.toml")))
+        }
       }
     }),
   ]

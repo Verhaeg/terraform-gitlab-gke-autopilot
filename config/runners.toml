@@ -1,0 +1,4 @@
+[[runners]]
+  [runners.kubernetes]
+    image = "ubuntu:18.04"
+    ephemeral_storage_limit = "5Gi"
