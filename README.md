@@ -69,7 +69,7 @@ Before applying this module, be sure to have the following already configured in
 | <a name="module_gke"></a> [gke](#module\_gke) | terraform-google-modules/kubernetes-engine/google//modules/beta-autopilot-public-cluster | ~> 24.1 |
 | <a name="module_project"></a> [project](#module\_project) | terraform-google-modules/project-factory/google | ~> 14.0 |
 | <a name="module_service_accounts"></a> [service\_accounts](#module\_service\_accounts) | terraform-google-modules/service-accounts/google | ~> 4.1 |
-| <a name="module_vpc"></a> [vpc](#module\_vpc) | terraform-google-modules/network/google | ~> 5.2 |
+| <a name="module_vpc"></a> [vpc](#module\_vpc) | terraform-google-modules/network/google | ~> 6.0 |
 
 ## Resources
 
