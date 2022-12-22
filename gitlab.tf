@@ -87,7 +87,13 @@ module "gitlab" {
       }
       gitlab-runner = {
         runners = {
-          config = yamldecode(yamlencode(file("config/runners.toml")))
+          config = yamldecode(yamlencode(templatefile("config/runners.toml", {
+            cache_type   = var.gitlab["cache_type"],
+            cache_bucket = var.gitlab["cache_bucket"],
+          })))
+          cache = {
+            secretName = kubernetes_secret_v1.runner_gcs_connection.metadata[0].name
+          }
         }
       }
     }),

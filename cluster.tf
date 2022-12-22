@@ -1,7 +1,7 @@
 module "gke" {
   # https://github.com/terraform-google-modules/terraform-google-kubernetes-engine
   source  = "terraform-google-modules/kubernetes-engine/google//modules/beta-autopilot-public-cluster"
-  version = "~> 23.1"
+  version = "~> 24.1"
 
   depends_on = [
     module.project
@@ -15,6 +15,8 @@ module "gke" {
   subnetwork        = "${var.vpc_name}-01"
   ip_range_pods     = "${var.vpc_name}-01-pods"
   ip_range_services = "${var.vpc_name}-01-services"
+
+  release_channel = "STABLE"
 
   add_cluster_firewall_rules        = true
   add_master_webhook_firewall_rules = true

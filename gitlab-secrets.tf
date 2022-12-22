@@ -16,6 +16,19 @@ resource "kubernetes_secret_v1" "gcs_connection" {
   type = "Opaque"
 }
 
+resource "kubernetes_secret_v1" "runner_gcs_connection" {
+  metadata {
+    name      = "gcs-application-credentials"
+    namespace = var.gitlab["namespace"]
+  }
+
+  data = {
+    "gcs-application-credentials-file" = module.gitlab_gcs_connection_sa.key
+  }
+
+  type = "Opaque"
+}
+
 resource "kubernetes_secret_v1" "omniauth_google" {
   metadata {
     name      = "gitlab-omni-provider-google"

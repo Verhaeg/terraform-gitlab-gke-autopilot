@@ -54,9 +54,9 @@ Before applying this module, be sure to have the following already configured in
 
 | Name | Version |
 |------|---------|
-| <a name="provider_google"></a> [google](#provider\_google) | 4.43.0 |
-| <a name="provider_http"></a> [http](#provider\_http) | 3.1.0 |
-| <a name="provider_kubernetes"></a> [kubernetes](#provider\_kubernetes) | 2.14.0 |
+| <a name="provider_google"></a> [google](#provider\_google) | 4.47.0 |
+| <a name="provider_http"></a> [http](#provider\_http) | 3.2.1 |
+| <a name="provider_kubernetes"></a> [kubernetes](#provider\_kubernetes) | 2.16.1 |
 
 ## Modules
 
@@ -66,7 +66,7 @@ Before applying this module, be sure to have the following already configured in
 | <a name="module_gitlab"></a> [gitlab](#module\_gitlab) | terraform-module/release/helm | 2.8.0 |
 | <a name="module_gitlab_gcs_connection_sa"></a> [gitlab\_gcs\_connection\_sa](#module\_gitlab\_gcs\_connection\_sa) | terraform-google-modules/service-accounts/google | ~> 4.1 |
 | <a name="module_gitlab_ip"></a> [gitlab\_ip](#module\_gitlab\_ip) | terraform-google-modules/address/google | 3.1.2 |
-| <a name="module_gke"></a> [gke](#module\_gke) | terraform-google-modules/kubernetes-engine/google//modules/beta-autopilot-public-cluster | ~> 23.1 |
+| <a name="module_gke"></a> [gke](#module\_gke) | terraform-google-modules/kubernetes-engine/google//modules/beta-autopilot-public-cluster | ~> 24.1 |
 | <a name="module_project"></a> [project](#module\_project) | terraform-google-modules/project-factory/google | ~> 14.0 |
 | <a name="module_service_accounts"></a> [service\_accounts](#module\_service\_accounts) | terraform-google-modules/service-accounts/google | ~> 4.1 |
 | <a name="module_vpc"></a> [vpc](#module\_vpc) | terraform-google-modules/network/google | ~> 5.2 |
@@ -82,6 +82,7 @@ Before applying this module, be sure to have the following already configured in
 | [kubernetes_secret_v1.gcs_connection](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/secret_v1) | resource |
 | [kubernetes_secret_v1.omniauth_gitlab](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/secret_v1) | resource |
 | [kubernetes_secret_v1.omniauth_google](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/secret_v1) | resource |
+| [kubernetes_secret_v1.runner_gcs_connection](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/secret_v1) | resource |
 | [google_billing_account.main](https://registry.terraform.io/providers/google/latest/docs/data-sources/billing_account) | data source |
 | [google_client_config.default](https://registry.terraform.io/providers/google/latest/docs/data-sources/client_config) | data source |
 | [google_organization.main](https://registry.terraform.io/providers/google/latest/docs/data-sources/organization) | data source |
@@ -94,7 +95,7 @@ Before applying this module, be sure to have the following already configured in
 | <a name="input_billing_account"></a> [billing\_account](#input\_billing\_account) | Name of the associated BillingAccount | `string` | n/a | yes |
 | <a name="input_dns_config"></a> [dns\_config](#input\_dns\_config) | Default configuration for DNS project and configs | <pre>object({<br>    project = string<br>    domain  = string<br>    ttl     = number<br>    type    = string<br>    zone    = string<br>  })</pre> | n/a | yes |
 | <a name="input_folder_id"></a> [folder\_id](#input\_folder\_id) | ID of the folder that this project will reside on in the form: folders/<id> | `string` | `""` | no |
-| <a name="input_gitlab"></a> [gitlab](#input\_gitlab) | Set of configurations for GitLab | <pre>object({<br>    domain          = string<br>    cert_email      = string<br>    namespace       = string<br>    version         = string<br>    bucket_prefix   = string<br>    bucket_location = string<br>  })</pre> | n/a | yes |
+| <a name="input_gitlab"></a> [gitlab](#input\_gitlab) | Set of configurations for GitLab | <pre>object({<br>    domain          = string<br>    cert_email      = string<br>    namespace       = string<br>    version         = string<br>    bucket_prefix   = string<br>    bucket_location = string<br>    cache_type      = string<br>    cache_bucket    = string<br>  })</pre> | n/a | yes |
 | <a name="input_gitlab_omni_gitlab"></a> [gitlab\_omni\_gitlab](#input\_gitlab\_omni\_gitlab) | Omniauth Provider configuration for GitLab | <pre>object({<br>    app_id     = string<br>    app_secret = string<br>  })</pre> | <pre>{<br>  "app_id": "",<br>  "app_secret": ""<br>}</pre> | no |
 | <a name="input_gitlab_omni_google"></a> [gitlab\_omni\_google](#input\_gitlab\_omni\_google) | Omniauth Provider configuration for Google | <pre>object({<br>    app_id     = string<br>    app_secret = string<br>  })</pre> | <pre>{<br>  "app_id": "",<br>  "app_secret": ""<br>}</pre> | no |
 | <a name="input_labels"></a> [labels](#input\_labels) | Labels to be applies to the project. Infra-Type label is always applied | <pre>object({<br>    cost-center = string<br>    cost-type   = string<br>    role        = string<br>    team        = string<br>    environment = string<br>  })</pre> | n/a | yes |

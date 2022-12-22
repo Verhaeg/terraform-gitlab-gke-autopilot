@@ -101,6 +101,8 @@ variable "gitlab" {
     version         = string
     bucket_prefix   = string
     bucket_location = string
+    cache_type      = string
+    cache_bucket    = string
   })
 
   description = "Set of configurations for GitLab"
