@@ -101,11 +101,28 @@ variable "gitlab" {
     version         = string
     bucket_prefix   = string
     bucket_location = string
-    cache_type      = string
-    cache_bucket    = string
+
   })
 
   description = "Set of configurations for GitLab"
+}
+
+variable "gitlab_runner" {
+  type = object({
+    cache_type   = string
+    cache_bucket = string
+    tags         = list(string)
+    runUntagged  = bool
+  })
+
+  default = {
+    cache_type   = null
+    cache_bucket = null
+    tags         = ["k8s"]
+    runUntagged  = true
+  }
+
+  description = "Set of configuration for GitLab Runner"
 }
 
 variable "dns_config" {

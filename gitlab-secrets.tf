@@ -18,7 +18,7 @@ resource "kubernetes_secret_v1" "gcs_connection" {
 
 resource "kubernetes_secret_v1" "runner_gcs_connection" {
   metadata {
-    name      = "gcs-application-credentials"
+    name      = "google-application-credentials"
     namespace = var.gitlab["namespace"]
   }
 
