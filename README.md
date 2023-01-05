@@ -82,6 +82,7 @@ Before applying this module, be sure to have the following already configured in
 | [kubernetes_secret_v1.gcs_connection](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/secret_v1) | resource |
 | [kubernetes_secret_v1.omniauth_gitlab](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/secret_v1) | resource |
 | [kubernetes_secret_v1.omniauth_google](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/secret_v1) | resource |
+| [kubernetes_secret_v1.registry_gcs](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/secret_v1) | resource |
 | [kubernetes_secret_v1.runner_gcs_connection](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/secret_v1) | resource |
 | [google_billing_account.main](https://registry.terraform.io/providers/google/latest/docs/data-sources/billing_account) | data source |
 | [google_client_config.default](https://registry.terraform.io/providers/google/latest/docs/data-sources/client_config) | data source |

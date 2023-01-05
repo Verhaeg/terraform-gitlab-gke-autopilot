@@ -84,6 +84,9 @@ module "gitlab" {
           omniauth_google_secret = kubernetes_secret_v1.omniauth_google.metadata[0].name,
           omniauth_gitlab_secret = kubernetes_secret_v1.omniauth_gitlab.metadata[0].name,
         }))
+        registry = {
+          bucket = "${var.gitlab["bucket_prefix"]}-${lower(var.gitlab["bucket_location"])}-gitlab-registry"
+        }
       }
       gitlab-runner = {
         runners = {
@@ -94,7 +97,7 @@ module "gitlab" {
           cache = {
             secretName = kubernetes_secret_v1.runner_gcs_connection.metadata[0].name
           }
-          tags        = var.gitlab_runner["tags"]
+          tags        = join(",", var.gitlab_runner["tags"])
           runUntagged = var.gitlab_runner["runUntagged"]
         }
         secrets = [
@@ -102,6 +105,13 @@ module "gitlab" {
             name = kubernetes_secret_v1.runner_gcs_connection.metadata[0].name
           }
         ]
+      }
+      registry = {
+        storage = {
+          secret   = kubernetes_secret_v1.registry_gcs.metadata[0].name
+          key      = "config"
+          extraKey = "keyfile"
+        }
       }
     }),
   ]

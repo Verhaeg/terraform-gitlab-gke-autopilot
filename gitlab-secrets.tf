@@ -29,6 +29,25 @@ resource "kubernetes_secret_v1" "runner_gcs_connection" {
   type = "Opaque"
 }
 
+resource "kubernetes_secret_v1" "registry_gcs" {
+  metadata {
+    name      = "gitlab-registry-config"
+    namespace = var.gitlab["namespace"]
+  }
+
+  data = {
+    "config" = yamlencode({
+      gcs = {
+        bucket  = "${var.gitlab["bucket_prefix"]}-${lower(var.gitlab["bucket_location"])}-gitlab-registry"
+        keyfile = "/etc/docker/registry/storage/keyfile"
+      }
+    })
+    "keyfile" = module.gitlab_gcs_connection_sa.key
+  }
+
+  type = "Opaque"
+}
+
 resource "kubernetes_secret_v1" "omniauth_google" {
   metadata {
     name      = "gitlab-omni-provider-google"
