@@ -40,6 +40,16 @@ Before applying this module, be sure to have the following already configured in
 * Billing Account
 * GCP Cloud DNS project
 
+## Known Issues
+
+### Resource limits
+
+Due to some Autopilot restrictions (see below), we need to set requested resources instead to be higher than what we need to ensure our limits are within affordable and operational usage.
+
+From: https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#allowable_resource_ranges
+
+> In an Autopilot cluster, each Pod is treated as a Guaranteed QoS Class Pod, with limits that are equal to requests. Autopilot automatically sets resource limits equal to requests if you do not have resource limits specified. If you do specify resource limits, your limits will be overridden and set to be equal to the requests.
+
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements
 
@@ -99,7 +109,7 @@ Before applying this module, be sure to have the following already configured in
 | <a name="input_gitlab"></a> [gitlab](#input\_gitlab) | Set of configurations for GitLab | <pre>object({<br>    domain          = string<br>    cert_email      = string<br>    namespace       = string<br>    version         = string<br>    bucket_prefix   = string<br>    bucket_location = string<br><br>  })</pre> | n/a | yes |
 | <a name="input_gitlab_omni_gitlab"></a> [gitlab\_omni\_gitlab](#input\_gitlab\_omni\_gitlab) | Omniauth Provider configuration for GitLab | <pre>object({<br>    app_id     = string<br>    app_secret = string<br>  })</pre> | <pre>{<br>  "app_id": "",<br>  "app_secret": ""<br>}</pre> | no |
 | <a name="input_gitlab_omni_google"></a> [gitlab\_omni\_google](#input\_gitlab\_omni\_google) | Omniauth Provider configuration for Google | <pre>object({<br>    app_id     = string<br>    app_secret = string<br>  })</pre> | <pre>{<br>  "app_id": "",<br>  "app_secret": ""<br>}</pre> | no |
-| <a name="input_gitlab_runner"></a> [gitlab\_runner](#input\_gitlab\_runner) | Set of configuration for GitLab Runner | <pre>object({<br>    cache_type   = string<br>    cache_bucket = string<br>    tags         = list(string)<br>    runUntagged  = bool<br>  })</pre> | <pre>{<br>  "cache_bucket": null,<br>  "cache_type": null,<br>  "runUntagged": true,<br>  "tags": [<br>    "k8s"<br>  ]<br>}</pre> | no |
+| <a name="input_gitlab_runner"></a> [gitlab\_runner](#input\_gitlab\_runner) | Set of configuration for GitLab Runner | <pre>object({<br>    cache_type   = string<br>    cache_bucket = string<br>    tags         = list(string)<br>    runUntagged  = bool<br>    concurrent   = number<br>  })</pre> | <pre>{<br>  "cache_bucket": null,<br>  "cache_type": null,<br>  "concurrent": 10,<br>  "runUntagged": true,<br>  "tags": [<br>    "k8s"<br>  ]<br>}</pre> | no |
 | <a name="input_labels"></a> [labels](#input\_labels) | Labels to be applies to the project. Infra-Type label is always applied | <pre>object({<br>    cost-center = string<br>    cost-type   = string<br>    role        = string<br>    team        = string<br>    environment = string<br>  })</pre> | n/a | yes |
 | <a name="input_master_authorized_networks_extra_ips"></a> [master\_authorized\_networks\_extra\_ips](#input\_master\_authorized\_networks\_extra\_ips) | List of objects with extra IPs to add to master authorized networks | <pre>list(object({<br>    cidr_block   = string<br>    display_name = string<br>  }))</pre> | `[]` | no |
 | <a name="input_namespaces"></a> [namespaces](#input\_namespaces) | List of desired namespaces to be created | `list(string)` | `[]` | no |

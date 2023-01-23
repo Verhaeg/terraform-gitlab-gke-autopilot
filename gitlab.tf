@@ -67,7 +67,7 @@ module "gitlab" {
     },
     {
       name  = "gitlab.migrations.resources.requests.memory",
-      value = "512Mi"
+      value = "1Gi"
     },
     {
       name  = "gitlab.webservice.resources.requests.cpu",
@@ -89,6 +89,8 @@ module "gitlab" {
         }
       }
       gitlab-runner = {
+        concurrent = var.gitlab_runner["concurrent"],
+        logFormat  = "json",
         runners = {
           config = yamldecode(yamlencode(templatefile("config/runners.toml", {
             cache_type   = var.gitlab_runner["cache_type"],

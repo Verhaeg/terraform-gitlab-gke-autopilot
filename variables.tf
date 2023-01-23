@@ -113,6 +113,7 @@ variable "gitlab_runner" {
     cache_bucket = string
     tags         = list(string)
     runUntagged  = bool
+    concurrent   = number
   })
 
   default = {
@@ -120,6 +121,7 @@ variable "gitlab_runner" {
     cache_bucket = null
     tags         = ["k8s"]
     runUntagged  = true
+    concurrent   = 10
   }
 
   description = "Set of configuration for GitLab Runner"

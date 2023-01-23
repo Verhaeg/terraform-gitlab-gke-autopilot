@@ -18,6 +18,7 @@ module "gcs_buckets" {
     "gitlab-pages",
     "gitlab-backups",
     "gitlab-registry",
+    "gitlab-cache",
     "tmp",
   ]
   prefix = var.gitlab["bucket_prefix"]

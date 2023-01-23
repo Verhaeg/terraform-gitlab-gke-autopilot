@@ -1,8 +1,23 @@
 [[runners]]
   [runners.cache]
     Type = "${cache_type}"
+    Shared = true
     [runners.cache.gcs]
       BucketName = "${cache_bucket}"
   [runners.kubernetes]
     image = "ubuntu:18.04"
     ephemeral_storage_limit = "5Gi"
+    helper_ephemeral_storage_limit = "5Gi"
+    service_ephemeral_storage_limit = "5Gi"
+    # Build Container
+    cpu_limit = "1000m"
+    cpu_request = "1000m"
+    memory_request = "2Gi"
+    memory_limit = "2Gi"
+    # Helper container
+    helper_memory_request = "1Gi"
+    helper_memory_limit = "1Gi"
+    # Service containers
+    service_memory_request = "2Gi"
+    service_memory_limit = "2Gi"
+    allow_privilege_escalation = false
