@@ -64,9 +64,9 @@ From: https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overvie
 
 | Name | Version |
 |------|---------|
-| <a name="provider_google"></a> [google](#provider\_google) | 4.48.0 |
+| <a name="provider_google"></a> [google](#provider\_google) | 4.50.0 |
 | <a name="provider_http"></a> [http](#provider\_http) | 3.2.1 |
-| <a name="provider_kubernetes"></a> [kubernetes](#provider\_kubernetes) | 2.16.1 |
+| <a name="provider_kubernetes"></a> [kubernetes](#provider\_kubernetes) | 2.17.0 |
 
 ## Modules
 
