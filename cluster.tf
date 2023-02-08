@@ -1,7 +1,7 @@
 module "gke" {
   # https://github.com/terraform-google-modules/terraform-google-kubernetes-engine
   source  = "terraform-google-modules/kubernetes-engine/google//modules/beta-autopilot-public-cluster"
-  version = "~> 24.1"
+  version = "~> 25.0"
 
   depends_on = [
     module.project
