@@ -71,7 +71,7 @@ module "gitlab" {
     },
     {
       name  = "gitlab.webservice.resources.requests.cpu",
-      value = "600m"
+      value = "500m"
     },
   ]
 
